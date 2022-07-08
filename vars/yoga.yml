@@ -1,0 +1,9 @@
+---
+user: travis
+
+desktop: true
+development: true
+games: false
+heavy: false
+laptop: true
+server: false

@@ -1,0 +1,4 @@
+---
+repokeys:
+  - https://syncthing.net/release-key.gpg
+  - https://download.docker.com/linux/ubuntu/gpg

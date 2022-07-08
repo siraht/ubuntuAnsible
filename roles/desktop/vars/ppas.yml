@@ -1,0 +1,6 @@
+---
+ppas:
+  - ppa:apandada1/xournalpp-stable
+  - ppa:oibaf/test
+  - ppa:appimagelauncher-team/stable
+  - ppa:flatpak/stable

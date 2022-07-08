@@ -1,0 +1,54 @@
+---
+- hosts: all
+  connection: local
+
+  tasks:
+    - name: Upgrade system packages (Ubuntu)
+      become: true
+      ansible.builtin.apt:
+        autoremove: true
+        upgrade: dist
+        update_cache: true
+      when: ansible_os_family == "Debian"
+
+    - name: Update system packages (OpenSuse)
+      become: true
+      ansible.builtin.zypper:
+        name: '*'
+        state: latest  # noqa 403
+        update_cache: true
+      when: ansible_os_family == "SLES"
+
+    - name: Update pipx packages
+      community.general.pipx:
+        state: upgrade_all
+
+    - name: Get list of cargo packages
+      ansible.builtin.shell: >
+        cargo install --list | grep : | cut -d ' ' -f 1
+      changed_when: false
+      check_mode: false
+      register: cargo_packages
+
+    - name: Update cargo packages
+      community.general.cargo:
+        name: "{{ cargo_packages.stdout_lines }}"
+        state: latest  # noqa 403
+      when: cargo_packages is defined
+
+    - name: Get list of pip packages
+      ansible.builtin.shell: pip freeze --user | cut -d = -f 1 
+      changed_when: false
+      check_mode: false
+      register: pip_packages
+
+    - name: Update pip packages
+      ansible.builtin.pip:
+        name: "{{ pip_packages.stdout_lines }}"
+        state: latest  # noqa 403
+      when: pip_packages is defined
+
+    - name: Update poetry
+      ansible.builtin.command: poetry self update
+      register: poetry_output
+      changed_when: "'Updating to' in poetry_output.stdout"

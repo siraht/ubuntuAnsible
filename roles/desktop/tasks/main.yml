@@ -1,0 +1,65 @@
+---
+- name: Include variables
+  include_vars:
+    dir: vars
+
+- name: Add repo keys
+  become: true
+  apt_key:
+    url: "{{ repokeys }}"
+    state: present
+
+- name: Add repos
+  become: true
+  apt_repository:
+    repo: "{{ repos }}"
+    state: present
+    update_cache: false
+
+- name: Add ppas
+  become: true
+  apt_repository:
+    repo: "{{ ppas }}"
+    state: present
+    update_cache: false
+    validate_certs: false
+
+- name: Install desktop applications
+  become: true
+  package:
+    name:
+      - appimagelauncher
+      - audacity
+      - baobab
+      - codium
+      - chromium-browser
+      - firejail
+      - flatpak
+      - grub-customizer
+      - gparted
+      - kdeconnect
+      - nohang
+      - pandoc
+      - pavucontrol
+      - qbittorrent
+      - qdirstat
+      - ubuntu-restricted-extras
+      - vlc
+      - vokoscreen
+      - xournalpp
+    state: present
+    update_cache: true
+
+- name: Install desktop applications (snap)
+  become: true
+  snap:
+    name:
+      - auto-cpufreq
+      - mailspring
+
+- name: Install desktop applications (flatpak)
+  become: true
+  flatpak:
+    name:
+      - com.github.debauchee.barrier
+      - com.toggl.TogglDesktop

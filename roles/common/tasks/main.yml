@@ -1,0 +1,54 @@
+---
+- name: Include variables
+  include_vars:
+    dir: vars
+
+- name: Add repo keys
+  become: true
+  apt_key:
+    url: "{{ repokeys }}"
+    state: present
+
+- name: Add repos
+  become: true
+  apt_repository:
+    repo: "{{ repos }}"
+    state: present
+    update_cache: false
+
+- name: Add ppas
+  become: true
+  apt_repository:
+    repo: "{{ ppas }}"
+    state: present
+    update_cache: false
+    validate_certs: false
+
+- name: Upgrade all packages
+  become: true
+  apt:
+    update_cache: true
+    upgrade: yes
+    autoremove: true
+    cache_valid_time: 3600
+
+- include: install-packages.yml
+
+- name: Install tailscale
+  become: true
+  shell:
+    cmd: curl -fsSL https://tailscale.com/install.sh | sh
+
+- name: Install rclone
+  become: true
+  shell:
+    cmd: curl https://rclone.org/install.sh | sudo bash
+
+- name: Finish docker installation
+  become: true
+  shell: |
+    newgrp docker
+    sudo usermod -aG docker $USER
+    sudo systemctl enable docker.service
+    sudo systemctl enable containerd.service
+    docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent:latest

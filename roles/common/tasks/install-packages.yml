@@ -1,0 +1,22 @@
+---
+- name: Install basic utilities
+  become: true
+  package:
+    name:
+      - ca-certificates
+      - cifs-utils
+      - curl
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-compose-plugin
+      - git
+      - gnupg
+      - htop
+      - lsb-release
+      - jq
+      - software-properties-common
+      - sshpass
+      - syncthing
+      - vim
+    state: present
