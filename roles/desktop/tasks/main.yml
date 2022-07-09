@@ -14,6 +14,10 @@
 
 - include: install-packages.yml
 
+- include: install-app-images.yml
+
+- include: install-debs.yml
+
 - name: Install applications (snap)
   become: true
   snap:

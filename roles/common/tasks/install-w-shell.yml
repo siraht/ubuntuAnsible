@@ -1,0 +1,67 @@
+---
+- name: Install tailscale
+  become: true
+  shell:
+    cmd: curl -fsSL https://tailscale.com/install.sh | sh
+    warn: false
+  ignore_errors: yes
+
+- name: Install rclone
+  become: true
+  shell:
+    cmd: curl https://rclone.org/install.sh | sudo bash
+    warn: false
+  ignore_errors: yes
+
+- name: Install netdata
+  become: true
+  shell:
+    cmd: wget -O /tmp/netdata-kickstart.sh https://my-netdata.io/kickstart.sh && sh /tmp/netdata-kickstart.sh
+    warn: false
+  ignore_errors: yes
+
+- name: Install firefox dev
+  become: true
+  shell: |
+    curl --location "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US" | tar --extract --verbose --preserve-permissions -j
+    cp -rp firefox /opt/firefoxdev
+    rm -rf firefox
+    chown -R $USER /opt/firefoxdev
+    echo "[Desktop Entry]
+    Name=Firefox Developer
+    GenericName=Firefox Developer Edition
+    Exec=/opt/firefoxdev/firefox %u
+    Terminal=false
+    Icon=/opt/firefoxdev/browser/chrome/icons/default/default128.png
+    Type=Application
+    Categories=Application;Network;X-Developer;
+    Comment=Firefox Developer Edition Web Browser.
+    StartupWMClass=Firefox Developer Edition" > ~/.local/share/applications/firefox_dev.desktop
+    chmod +x ~/.local/share/applications/firefox_dev.desktop
+  warn: false
+
+- name: Install filezilla
+  become: true
+  shell: |
+    curl "https://docs.travishinton.us/index.php/s/Jx4LiAQDsbfPdn2/download/FileZilla_Pro_3.59.0_x86_64-linux-gnu.tar.bz2" | tar --extract --verbose --preserve-permissions -j
+    cp -rp FileZilla3 /opt/FileZilla3
+    rm -rf FileZilla3
+    chown -R $USER /opt/FileZilla3
+    echo "[Desktop Entry]
+    Name=FileZilla
+    GenericName=FTP client
+    GenericName[da]=FTP-klient
+    GenericName[de]=FTP-Client
+    GenericName[fr]=Client FTP
+    Comment=Download and upload files via FTP, FTPS and SFTP
+    Comment[da]=Download og upload filer via FTP, FTPS og SFTP
+    Comment[de]=Dateien über FTP, FTPS und SFTP übertragen
+    Comment[fr]=Transférer des fichiers via FTP, FTPS et SFTP
+    Exec=/opt/FileZilla3/bin/filezilla %U
+    Terminal=false
+    Icon=/opt/FileZilla3/share/filezilla/resources/480x480/filezilla_pro.png
+    Type=Application
+    Categories=Network;FileTransfer;
+    Version=1.0" > ~/.local/share/applications/filezilla.desktop
+    chmod +x ~/.local/share/applications/filezilla.desktop
+  warn: false

@@ -3,6 +3,15 @@
   include_vars:
     dir: vars
 
+- name: Allow ufw openssh
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: Enable ufw
+  ufw:
+    state: enabled
+
 - name: Install curl and gnupg
   become: true
   apt:
@@ -21,7 +30,7 @@
 
 - include: install-packages.yml
 
-- include: install-w-scripts.yml
+- include: install-w-shell.yml
 
 - name: Finish docker installation
   become: true
