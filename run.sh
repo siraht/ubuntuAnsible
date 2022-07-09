@@ -62,7 +62,7 @@ function main() {
     mkdir -p "${PROJECTS_DIR}"
     git clone "${PLAYBOOK_REPO}" "${PROJECTS_DIR}"
     #ansible-galaxy install -r "${PROJECTS_DIR}/requirements.yml"
-    ansible-playbook -i localhost, "${PROJECTS_DIR}/Ansible/${PLAYBOOK}" --ask-become-pass
+    ansible-playbook -i localhost, "${PROJECTS_DIR}/${PLAYBOOK}" --ask-become-pass
 
 }
 
