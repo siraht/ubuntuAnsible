@@ -4,9 +4,18 @@
   shell:
     cmd: curl -fsSL https://tailscale.com/install.sh | sh
     warn: false
+  ignore_errors: yes
 
 - name: Install rclone
   become: true
   shell:
     cmd: curl https://rclone.org/install.sh | sudo bash
     warn: false
+  ignore_errors: yes
+
+- name: Install netdata
+  become: true
+  shell:
+    cmd: wget -O /tmp/netdata-kickstart.sh https://my-netdata.io/kickstart.sh && sh /tmp/netdata-kickstart.sh
+    warn: false
+  ignore_errors: yes

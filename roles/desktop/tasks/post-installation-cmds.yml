@@ -4,4 +4,4 @@
   shell:
     cmd: "{{ item }}"
     warn: false
-  loop: "{{ post-cmds }}"
+  loop: "{{ postcmds }}"

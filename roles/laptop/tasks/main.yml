@@ -15,3 +15,5 @@
   snap:
     name:
       - auto-cpufreq
+
+- include: post-installation-cmds.yml
