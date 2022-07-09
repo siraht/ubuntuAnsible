@@ -3,6 +3,12 @@
   include_vars:
     dir: vars
 
+- name: Install curl
+  become: true
+  apt:
+    name: curl
+    state: present
+
 - name: Add syncthing repo
   become: true
   shell:
