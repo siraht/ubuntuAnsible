@@ -1,0 +1,7 @@
+---
+- name: Required post-installation commands
+  become: true
+  shell:
+    cmd: "{{ item }}"
+    warn: false
+  loop: "{{ post-cmds }}"

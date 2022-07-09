@@ -3,8 +3,10 @@
   become: true
   shell:
     cmd: curl -fsSL https://tailscale.com/install.sh | sh
+    warn: false
 
 - name: Install rclone
   become: true
   shell:
     cmd: curl https://rclone.org/install.sh | sudo bash
+    warn: false

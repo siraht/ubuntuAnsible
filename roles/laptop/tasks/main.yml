@@ -1,0 +1,17 @@
+---
+- name: Include variables
+  include_vars:
+    dir: vars
+
+- name: Update repos and upgrade all packages
+  become: true
+  apt:
+    update_cache: true
+    upgrade: yes
+    autoremove: true
+
+- name: Install applications (snap)
+  become: true
+  snap:
+    name:
+      - auto-cpufreq

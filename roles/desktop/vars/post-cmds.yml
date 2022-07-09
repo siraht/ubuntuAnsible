@@ -1,0 +1,3 @@
+---
+post-cmds:
+  - sudo systemctl enable --now nohang-desktop.service

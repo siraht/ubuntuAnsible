@@ -5,5 +5,5 @@ desktop: true
 development: true
 games: false
 heavy: true
-laptop: true
+laptop: false
 server: true

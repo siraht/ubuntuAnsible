@@ -12,6 +12,7 @@
       - grub-customizer #requires repo for 22.04
       - gparted
       - kdeconnect
+      - nohang
       - pandoc
       - pavucontrol
       - qbittorrent

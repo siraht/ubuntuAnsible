@@ -17,7 +17,6 @@
   apt:
     update_cache: true
     upgrade: yes
-    autoremove: true
     cache_valid_time: 3600
 
 - include: install-packages.yml

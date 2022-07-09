@@ -18,7 +18,6 @@
   become: true
   snap:
     name:
-      - auto-cpufreq
       - mailspring
 
 - name: Add flathub repository
@@ -32,3 +31,5 @@
     name:
       - com.github.debauchee.barrier
       - com.toggl.TogglDesktop
+
+- include: post-installation-cmds.yml
