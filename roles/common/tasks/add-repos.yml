@@ -1,12 +1,12 @@
 ---
-- name: Add common repo keys w/ shell
+- name: Add repo keys w/ shell
   become: true
   shell:
     cmd: "{{ item }}"
     warn: false
   loop: "{{ repokeys }}"
 
-- name: Add common repos
+- name: Add repos
   become: true
   apt_repository:
     repo: "{{ item }}"

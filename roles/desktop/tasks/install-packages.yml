@@ -1,5 +1,5 @@
 ---
-- name: Install desktop packages (apt)
+- name: Install packages (apt)
   become: true
   package:
     name:
