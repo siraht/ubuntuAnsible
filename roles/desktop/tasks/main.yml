@@ -26,11 +26,6 @@
     update_cache: true
   loop: "{{ ppas }}"
 
-- name: Add flatpak flathub repository
-  become: true
-  shell:
-    cmd: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
 - name: Install desktop applications
   become: true
   package:
@@ -63,6 +58,11 @@
     name:
       - auto-cpufreq
       - mailspring
+
+- name: Add flatpak flathub repository
+  become: true
+  shell:
+    cmd: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 - name: Install desktop applications (flatpak)
   become: true
