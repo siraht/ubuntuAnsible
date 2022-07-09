@@ -14,11 +14,3 @@
   roles:
     - { role: common, tags: common }
     - { role: desktop, when: desktop, tags: desktop }
-    - { role: development, when: development, tags: development }
-    - { role: docker, tags: docker }
-    - { role: heavy, when: heavy, tags: heavy }
-    - { role: laptop, when: laptop, tags: laptop }
-    - { role: remove, tags: remove }
-    - { role: server, when: server, tags: server }
-    - { role: ssh, tags: ssh }
-    - { role: terminal, tags: terminal }
