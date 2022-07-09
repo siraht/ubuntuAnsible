@@ -1,0 +1,7 @@
+- name: Add ppas and apt update #E:Conflicting values set for option Signed-By regarding source https:... vscodium: /usr/share/keyrings/....gpg != , E:The list of sources could not be read. BOTH PPAS SHOW THIS
+  become: true
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    update_cache: true
+  loop: "{{ ppas }}"

@@ -18,14 +18,6 @@
     update_cache: false
   loop: "{{ repos }}"
 
-- name: Add ppas and apt update
-  become: true
-  apt_repository:
-    repo: "{{ item }}"
-    state: present
-    update_cache: true
-  loop: "{{ ppas }}"
-
 - name: Install desktop applications
   become: true
   package:
