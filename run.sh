@@ -11,7 +11,7 @@ set -o pipefail         # Use last non-zero exit code in a pipeline
 
 # Define constants
 readonly PROJECTS_DIR="configuration"
-readonly PLAYBOOK_REPO="https://github.com/siraht/ubuntuConfigMgmt.git"
+readonly PLAYBOOK_REPO="https://github.com/siraht/ubuntuAnsible.git"
 readonly PLAYBOOK="setup.yml"
 
 # Display error message
