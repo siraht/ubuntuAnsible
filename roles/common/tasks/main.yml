@@ -6,8 +6,9 @@
 - name: Install curl
   become: true
   apt:
-    name: curl
-    state: present
+    pkg:
+      - curl
+      - gnupg
 
 - name: Add syncthing repo
   become: true
