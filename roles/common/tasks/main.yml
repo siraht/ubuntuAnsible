@@ -3,39 +3,38 @@
   include_vars:
     dir: vars
 
-- name: Install curl
+- name: Install curl and gnupg
   become: true
   apt:
     pkg:
       - curl
       - gnupg
 
-- name: Add syncthing repo
+- name: Add syncthing gpg key
   become: true
   shell:
     cmd: curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
     warn: false
 
-- name: Add docker repo
+- name: Add docker gpg key
   become: true
   shell:
     cmd: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
     warn: false
 
-- name: Add repos
+- name: Add syncthing repo
   become: true
   apt_repository:
-    repo: "{{ repos }}"
+    repo: deb https://apt.syncthing.net/ syncthing stable
     state: present
     update_cache: false
 
-- name: Add ppas
+- name: Add docker repo
   become: true
   apt_repository:
-    repo: "{{ ppas }}"
+    repo: deb https://download.docker.com/linux/ubuntu jammy stable
     state: present
     update_cache: false
-    validate_certs: false
 
 - name: Upgrade all packages
   become: true
