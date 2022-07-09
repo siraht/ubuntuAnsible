@@ -3,11 +3,13 @@
   include_vars:
     dir: vars
 
-- name: Add repo keys
+- name: Add syncthing repo
   become: true
-  apt_key:
-    url: "{{ repokeys }}"
-    state: present
+  shell: curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+
+- name: Add docker repo
+  become: true
+  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 - name: Add repos
   become: true
