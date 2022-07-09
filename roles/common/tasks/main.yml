@@ -5,13 +5,15 @@
 
 - name: Add syncthing repo
   become: true
-  shell: curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
-  warn: false
+  shell:
+    cmd: curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+    warn: false
 
 - name: Add docker repo
   become: true
-  shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-  warn: false
+  shell:
+    cmd: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    warn: false
 
 - name: Add repos
   become: true
