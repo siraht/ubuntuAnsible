@@ -8,7 +8,7 @@
       - baobab
       - chromium-browser
       - firejail
-      - flatpak #requires repo
+      - flatpak
       - grub-customizer
       - gparted
       - kdeconnect
