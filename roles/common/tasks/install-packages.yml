@@ -1,5 +1,5 @@
 ---
-- name: Install basic utilities
+- name: Install common Ubuntu packages
   become: true
   package:
     name:

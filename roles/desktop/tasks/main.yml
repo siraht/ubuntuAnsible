@@ -6,23 +6,26 @@
 - name: Add repo keys
   become: true
   apt_key:
-    url: "{{ repokeys }}"
+    url: "{{ item }}"
     state: present
+  loop: "{{ repokeys }}"
 
 - name: Add repos
   become: true
   apt_repository:
-    repo: "{{ repos }}"
+    repo: "{{ item }}"
     state: present
     update_cache: false
+  loop: "{{ repos }}"
 
 - name: Add ppas
   become: true
   apt_repository:
-    repo: "{{ ppas }}"
+    repo: "{{ item }}"
     state: present
     update_cache: false
     validate_certs: false
+  loop: "{{ ppas }}"
 
 - name: Install desktop applications
   become: true
