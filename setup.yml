@@ -14,3 +14,4 @@
   roles:
     - { role: common, tags: common }
     - { role: desktop, when: desktop, tags: desktop }
+    - { role: laptop, when: laptop, tags: laptop }

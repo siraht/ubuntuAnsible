@@ -28,8 +28,8 @@
 - name: Install applications (flatpak)
   become: true
   flatpak:
-    name:
-      - com.github.debauchee.barrier
-      - com.toggl.TogglDesktop
+    name: "{{ item }}"
+    state: present
+  loop: "{{ flatpaks }}"
 
 - include: post-installation-cmds.yml

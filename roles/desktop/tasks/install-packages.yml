@@ -6,7 +6,6 @@
       - appimagelauncher #requires repo
       - audacity
       - baobab
-      - chromium-browser
       - firejail
       - flatpak #included in 22.04
       - grub-customizer #requires repo for 22.04

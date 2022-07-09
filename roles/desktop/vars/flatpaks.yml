@@ -1,0 +1,4 @@
+---
+flatpaks:
+  - com.github.debauchee.barrier
+  - com.toggl.TogglDesktop
