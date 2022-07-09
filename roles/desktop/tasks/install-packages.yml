@@ -1,0 +1,23 @@
+---
+- name: Install desktop packages (apt)
+  become: true
+  package:
+    name:
+      - appimagelauncher #requires repo
+      - audacity
+      - baobab
+      - chromium-browser
+      - firejail
+      - flatpak #requires repo
+      - grub-customizer
+      - gparted
+      - kdeconnect
+      - pandoc
+      - pavucontrol
+      - qbittorrent
+      - qdirstat
+      - ubuntu-restricted-extras
+      - vlc
+      - vokoscreen
+      - xournalpp
+    state: present

@@ -10,20 +10,7 @@
       - curl
       - gnupg
 
-- name: Add gpg keys
-  become: true
-  shell:
-    cmd: "{{ item }}"
-    warn: false
-  loop: "{{ repokeycmds }}"
-
-- name: Add repos
-  become: true
-  apt_repository:
-    repo: "{{ item }}"
-    state: present
-    update_cache: false
-  loop: "{{ repocmds }}"
+- include: add-repos.yml
 
 - name: Update repos and upgrade all packages
   become: true
@@ -35,15 +22,7 @@
 
 - include: install-packages.yml
 
-- name: Install tailscale
-  become: true
-  shell:
-    cmd: curl -fsSL https://tailscale.com/install.sh | sh
-
-- name: Install rclone
-  become: true
-  shell:
-    cmd: curl https://rclone.org/install.sh | sudo bash
+- include: install-w-scripts.yml
 
 - name: Finish docker installation
   become: true

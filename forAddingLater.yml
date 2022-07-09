@@ -6,42 +6,4 @@
     update_cache: true
   loop: "{{ ppas }}"
 
-## These were removed, testing looping the cmds
-- name: Add syncthing gpg key
-  become: true
-  shell:
-    cmd: curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
-    warn: false
-
-- name: Add docker gpg key
-  become: true
-  shell:
-    cmd: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker.gpg
-    warn: false
-
-- name: Add vscodium gpg key
-  become: true
-  shell:
-    cmd: wget -qO - https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor | sudo dd of=/usr/share/keyrings/vscodium-archive-keyring.gpg
-    warn: false
-
-- name: Add syncthing repo
-  become: true
-  apt_repository:
-    repo: "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable"
-    state: present
-    update_cache: false
-
-- name: Add docker repo
-  become: true
-  apt_repository:
-    repo: "deb [arch=amd64 signed-by=/usr/share/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable"
-    state: present
-    update_cache: false
-
-- name: Add vscodium repo
-  become: true
-  apt_repository:
-    repo: "deb [signed-by=/usr/share/keyrings/vscodium-archive-keyring.gpg] https://download.vscodium.com/debs vscodium main"
-    state: present
-    update_cache: false
+appimagelauncher?

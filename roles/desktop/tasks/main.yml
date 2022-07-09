@@ -3,44 +3,9 @@
   include_vars:
     dir: vars
 
-- name: Add repo keys
-  become: true
-  apt_key:
-    url: "{{ item }}"
-    state: present
-  loop: "{{ repokeys }}"
+- include: add-repos.yml
 
-- name: Add repos
-  become: true
-  apt_repository:
-    repo: "{{ item }}"
-    state: present
-    update_cache: true
-  loop: "{{ repos }}"
-
-- name: Install desktop applications
-  become: true
-  package:
-    name:
-      - appimagelauncher
-      - audacity
-      - baobab
-      - chromium-browser
-      - firejail
-      - flatpak
-      - grub-customizer
-      - gparted
-      - kdeconnect
-      - pandoc
-      - pavucontrol
-      - qbittorrent
-      - qdirstat
-      - ubuntu-restricted-extras
-      - vlc
-      - vokoscreen
-      - xournalpp
-    state: present
-    update_cache: false
+- include: install-packages.yml
 
 - name: Install desktop applications (snap)
   become: true
@@ -49,7 +14,7 @@
       - auto-cpufreq
       - mailspring
 
-- name: Add flatpak flathub repository
+- name: Add flathub repository
   become: true
   shell:
     cmd: flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo

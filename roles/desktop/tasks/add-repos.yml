@@ -1,0 +1,15 @@
+---
+- name: Add desktop repo keys w/ shell
+  become: true
+  shell:
+    cmd: "{{ item }}"
+    warn: false
+  loop: "{{ repokeys }}"
+
+- name: Add desktop repos
+  become: true
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    update_cache: true
+  loop: "{{ repos }}"

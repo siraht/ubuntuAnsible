@@ -1,4 +1,4 @@
 ---
 repokeys:
-  - https://syncthing.net/release-key.gpg
-  - https://download.docker.com/linux/ubuntu/gpg
+  - curl -o /usr/share/keyrings/syncthing-archive-keyring.gpg https://syncthing.net/release-key.gpg
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker.gpg

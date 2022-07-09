@@ -1,4 +1,4 @@
 ---
 repos:
-  - deb https://apt.syncthing.net/ syncthing stable
-  - deb https://download.docker.com/linux/ubuntu jammy stable
+  - "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://apt.syncthing.net/ syncthing stable"
+  - "deb [arch=amd64 signed-by=/usr/share/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable"
