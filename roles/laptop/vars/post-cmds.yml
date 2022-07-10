@@ -1,3 +1,0 @@
----
-post-cmds:
-  - auto-cpufreq --install

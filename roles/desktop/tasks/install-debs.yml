@@ -5,7 +5,7 @@
     curl -L https://mullvad.net/download/app/deb/latest/ --output mullvad.deb
     apt-get -y install ./mullvad.deb
     rm mullvad.deb
-  warn: false
+  ignore_errors: true
 
 - name: Install videodownloadhelper
   become: true
@@ -13,4 +13,4 @@
     curl https://github.com/mi-g/vdhcoapp/releases/download/v1.6.3-net.downloadhelper.coapp-1.6.3-1_amd64.deb --output vdh.deb
     apt-get -y install ./vdh.deb
     rm vdh.deb
-  warn: false
+  ignore_errors: true

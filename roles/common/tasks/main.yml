@@ -3,6 +3,15 @@
   include_vars:
     dir: vars
 
+- name: Create ssh directory
+  file:
+    path: /home/travis/.ssh
+    state: directory
+
+- name: Generate ssh key
+  openssh_keypair:
+    path: /home/travis/.ssh/id_rsa
+
 - name: Allow ufw openssh
   ufw:
     rule: allow
@@ -35,8 +44,9 @@
 - name: Finish docker installation
   become: true
   shell: |
+    groupadd docker
+    usermod -aG docker $USER
     newgrp docker
-    sudo usermod -aG docker $USER
-    sudo systemctl enable docker.service
-    sudo systemctl enable containerd.service
+    systemctl enable docker.service
+    systemctl enable containerd.service
     docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent:latest

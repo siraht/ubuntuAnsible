@@ -1,32 +1,28 @@
 ---
 - name: Install beeper
-  become: true
   shell: |
     curl -L https://download.beeper.com/linux/appImage/x64 --output beeper.AppImage
     chmod +x beeper.AppImage
     ail-cli integrate beeper.AppImage
-  warn: false
+  ignore_errors: true
 
 - name: Install clickup
-  become: true
   shell: |
     curl -L https://desktop.clickup.com/linux --output clickup.AppImage
     chmod +x clickup.AppImage
     ail-cli integrate clickup.AppImage
-  warn: false
+  ignore_errors: false
 
 - name: Install obsidian
-  become: true
   shell: |
     curl -L $(curl -s "https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest" | jq --raw-output '.assets[2].browser_download_url' | head -n1) --output obsidian.AppImage
     chmod +x obsidian.AppImage
     ail-cli integrate obsidian.AppImage
-  warn: false
+  ignore_errors: false
 
 - name: Install plexamp
-  become: true
   shell: |
     curl https://plexamp.plex.tv/plexamp.plex.tv/desktop/Plexamp-4.2.1.AppImage --output plexamp.AppImage
     chmod +x plexamp.AppImage
     ail-cli integrate plexamp.AppImage
-  warn: false
+  ignore_errors: false
