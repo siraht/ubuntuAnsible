@@ -20,6 +20,10 @@ or to just run the playbook itself after installing dependencies:
 2. Sign into Firefox
 3. Connect to netdata at https://app.netdata.cloud
 4. Add SSH key to GitHub
+5. Add new machine to Portainer host
+6. Setup all other programs
+
+
 
 ## Bugs
 1. ...
