@@ -16,12 +16,16 @@ or to just run the playbook itself after installing dependencies:
 `ansible-playbook --inventory localhost, setup.yml --ask-become-pass`
 
 ### Post-playbook
-1. Setup Tailscale: `sudo tailscale up --accept-routes`
+1. Setup Tailscale
+    - `sudo tailscale up --accept-routes`
 2. Sign into Firefox
-3. Connect to netdata at https://app.netdata.cloud
+3. Connect to netdata
+    - https://app.netdata.cloud
 4. Add SSH key to GitHub
 5. Add new machine to Portainer host
-6. Setup all other programs
+6. Edit nohang config
+    - /etc/nohang/nohang-desktop.conf
+7. Setup all other programs
 
 
 
