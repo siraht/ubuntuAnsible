@@ -1,5 +1,6 @@
 ---
 - Finish adding programs
+- Add mailspring .deb
 
 - name: Install firefox dev
   become: true

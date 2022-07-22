@@ -10,10 +10,11 @@
     upgrade: yes
     autoremove: true
 
-- name: Install applications (snap)
+- name: Install auto-cpufreq
   become: true
-  snap:
-    name:
-      - auto-cpufreq
+  shell: |
+    git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+    cd auto-cpufreq && sudo ./auto-cpufreq-installer
+  ignore_errors: true
 
 - include: post-installation-cmds.yml
