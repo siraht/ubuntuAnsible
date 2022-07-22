@@ -13,13 +13,16 @@
     path: /home/travis/.ssh/id_rsa
 
 - name: Allow ufw openssh
+  become: true
   ufw:
     rule: allow
-    name: OpenSSH
+    port: 22
 
 - name: Enable ufw
+  become: true
   ufw:
     state: enabled
+
 
 - name: Install curl and gnupg
   become: true
