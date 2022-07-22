@@ -30,4 +30,4 @@ or to just run the playbook itself after installing dependencies:
 
 
 ## Bugs
-1. ...
+1. On 22.04 Pop_OS I had to run it with `ansible-playbook --inventory localhost, ~/configuration/setup.yml --ask-become-pass -e ansible_python_interpreter=/usr/bin/python3`
