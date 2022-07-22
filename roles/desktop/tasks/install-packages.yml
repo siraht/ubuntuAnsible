@@ -8,6 +8,7 @@
       - baobab
       - firejail
       - flatpak #included in 22.04
+      - fsearch
       - grub-customizer #requires repo for 22.04
       - gparted
       - kdeconnect
