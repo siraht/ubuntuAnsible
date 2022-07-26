@@ -120,7 +120,7 @@ Icon=/opt/firefoxdev/browser/chrome/icons/default/default128.png
 Type=Application
 Categories=Application;Network;X-Developer;
 Comment=Firefox Developer Edition Web Browser.
-StartupWMClass=Firefox Developer Edition" > \
+StartupWMClass=firefox-aurora" > \
 	~/.local/share/applications/firefox_dev.desktop
 sudo chmod +x ~/.local/share/applications/firefox_dev.desktop
 }
