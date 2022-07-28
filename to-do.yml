@@ -3,6 +3,7 @@
 - Add mailspring .deb
 - Modify for Regolith/i3
 - Add tmux setup
+- Add Firefix profile restoration
 
 - name: Install firefox dev
   become: true
