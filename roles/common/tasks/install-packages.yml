@@ -18,4 +18,5 @@
       - syncthing #requires repo
       - tmux
       - vim
+      - xclip
     state: present
