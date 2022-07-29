@@ -16,5 +16,6 @@
       - software-properties-common
       - sshpass
       - syncthing #requires repo
+      - tmux
       - vim
     state: present
