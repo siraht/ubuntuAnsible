@@ -20,6 +20,8 @@ or to just run the playbook itself after installing dependencies:
     - vim .tmux.conf.local
         - tmux_conf_copy_to_os_clipboard=true
         - enable all tpm plugins
+    - Add keyboard shortcut with following commands:
+        - gnome-terminal -e "tmux-attach"
 2. Setup Tailscale
     - `sudo tailscale up --accept-routes`
 3. Sign into Firefox
