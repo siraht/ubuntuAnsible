@@ -44,6 +44,13 @@
 
 - include: install-w-shell.yml
 
+- name: Setup oh my tmux!
+  shell: |
+    cd
+    git clone https://github.com/gpakosz/.tmux.git
+    ln -s -f .tmux/.tmux.conf
+    cp .tmux/.tmux.conf.local .
+
 - name: Finish docker installation
   become: true
   shell: |
