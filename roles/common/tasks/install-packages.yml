@@ -12,6 +12,7 @@
       - gnupg
       - htop
       - lsb-release
+      - nala
       - jq
       - software-properties-common
       - sshpass
