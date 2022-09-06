@@ -33,7 +33,12 @@ or to just run the playbook itself after installing dependencies:
     - /etc/nohang/nohang-desktop.conf
 8. Setup all other programs
 
-
+## To-Do
+- Finish adding programs
+- Add mailspring .deb
+- Modify for Regolith/i3
+- Add tmux setup
+- Add Firefox profile restoration
 
 ## Bugs
 1. On 22.04 Pop_OS I had to run it with `ansible-playbook --inventory localhost, ~/configuration/setup.yml --ask-become-pass -e ansible_python_interpreter=/usr/bin/python3`
