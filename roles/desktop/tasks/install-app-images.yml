@@ -26,3 +26,11 @@
     chmod +x plexamp.AppImage
     ail-cli integrate plexamp.AppImage
   ignore_errors: false
+  
+- name: Install FontBase
+  shell: |
+    curl https://releases.fontba.se/linux/FontBase-2.17.5.AppImage --output fontbase.AppImage
+    chmod +x fontbase.AppImage
+    ail-cli integrate fontbase.AppImage
+  ignore_errors: false
+
